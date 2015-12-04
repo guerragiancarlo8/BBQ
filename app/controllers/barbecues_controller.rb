@@ -11,7 +11,10 @@ class BarbecuesController < ApplicationController
   end
 
   def join_bbq
-    render json: current_user
+    bbq = Barbecue.find_by(id: params[:id])
+    puts bbq
+    bbq.users << current_user
+    #render json: current_user
   end
 
   def send_json
